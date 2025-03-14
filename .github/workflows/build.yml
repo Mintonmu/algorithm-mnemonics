@@ -52,4 +52,4 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           name: algorithm-mnemonics-vscode  
-          path: algorithm-mnemonics/dist/algorithm-mnemonics-vscode-1.0.3.vsix 
+          path: algorithm-mnemonics/algorithm-mnemonics-vscode-1.0.3.vsix 
