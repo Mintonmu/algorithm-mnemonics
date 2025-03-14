@@ -28,6 +28,12 @@ jobs:
         with:
           node-version: '21'  # 设置 Node.js 版本
           
+      - name: Set npm registry to taobao
+        run: npm config set registry https://registry.npmmirror.com 
+        
+      - name: Install Yarn
+        run: npm install --global yarn
+        
       - name: Cache Node.js modules
         uses: actions/cache@v3
         with:
@@ -36,7 +42,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-    
       - name: Install dependencies
-        run: npm install --verbose
+        run: yarn install
       # Runs a set of commands using the runners shell
       - name: package to VSIX file
         run: npm run package
