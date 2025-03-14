@@ -28,6 +28,14 @@ jobs:
         with:
           node-version: '21' 
           
+      - name: Cache Yarn dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/yarn
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-    
+            
       - name: Set npm registry to taobao
         run: npm config set registry https://registry.npmmirror.com 
         
@@ -44,4 +52,4 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           name: algorithm-mnemonics-vscode  
-          path: dist/algorithm-mnemonics-vscode.vsix  
+          path: algorithm-mnemonics/dist/algorithm-mnemonics-vscode-1.0.3.vsix 
