@@ -47,7 +47,9 @@ jobs:
         
       - name: package to VSIX file
         run: yarn run pack
-
+      - name: List files
+        run: ls -R dist
+        
       - name: Upload VSIX file
         uses: actions/upload-pages-artifact@v3
         with:
