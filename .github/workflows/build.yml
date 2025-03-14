@@ -27,8 +27,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '21'  # 设置 Node.js 版本
+          
       - name: Install dependencies
-        run: npm install  # 安装依赖
+        run:
+          npm set timeout=60000 
+          npm install vsce --verbose
       # Runs a set of commands using the runners shell
       - name: package to VSIX file
         run: npm run package
