@@ -51,8 +51,15 @@ jobs:
       - name: List files
         run: ls -R /home/runner/work/algorithm-mnemonics/algorithm-mnemonics/
         
-      - name: Upload VSIX file
-        uses: actions/upload-pages-artifact@v3
+      # - name: Upload VSIX file
+      #   uses: actions/upload-pages-artifact@v3
+      #   with:
+      #     name: algorithm-mnemonics-vscode  
+      #     path: /home/runner/work/algorithm-mnemonics/algorithm-mnemonics/algorithm-mnemonics-vscode-1.0.3.vsix
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: algorithm-mnemonics-vscode  
-          path: /home/runner/work/algorithm-mnemonics/algorithm-mnemonics/algorithm-mnemonics-vscode-1.0.3.vsix
+          tag: v1.0.0  # 根据需要设置标签
+          files: /home/runner/work/algorithm-mnemonics/algorithm-mnemonics/algorithm-mnemonics-vscode-1.0.3.vsix  # 指向生成的文件
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 的秘密令牌进行身份验证
