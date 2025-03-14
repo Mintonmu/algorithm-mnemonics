@@ -47,20 +47,3 @@ jobs:
         
       - name: package to VSIX file
         run: yarn run pack
-      - name: Create Tag
-        run: |
-            git tag v1.0.0
-            git push origin v1.0.0
-      # - name: Upload VSIX file
-      #   uses: actions/upload-pages-artifact@v3
-      #   with:
-      #     name: algorithm-mnemonics-vscode  
-      #     path: /home/runner/work/algorithm-mnemonics/algorithm-mnemonics/algorithm-mnemonics-vscode-1.0.3.vsix
-          
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
-        with:
-          tag: v1.0.0 
-          files: /home/runner/work/algorithm-mnemonics/algorithm-mnemonics/algorithm-mnemonics-vscode-1.0.3.vsix  # 指向生成的文件
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # 使用 GitHub 的秘密令牌进行身份验证
