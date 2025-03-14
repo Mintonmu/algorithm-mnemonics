@@ -48,14 +48,17 @@ jobs:
       - name: package to VSIX file
         run: yarn run pack
       
-      - name: List files
-        run: ls -R /home/runner/work/algorithm-mnemonics/algorithm-mnemonics/
-        
       # - name: Upload VSIX file
       #   uses: actions/upload-pages-artifact@v3
       #   with:
       #     name: algorithm-mnemonics-vscode  
       #     path: /home/runner/work/algorithm-mnemonics/algorithm-mnemonics/algorithm-mnemonics-vscode-1.0.3.vsix
+      - name: Tag
+        if: startsWith(github.ref, 'refs/heads/release/')
+        run: |
+          git tag "v$env:GitVersion_SemVer"
+          git push origin "v$env:GitVersion_SemVer"
+          
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
