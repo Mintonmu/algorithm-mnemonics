@@ -41,7 +41,7 @@ jobs:
         run: yarn run pack
 
       - name: Upload VSIX file
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-pages-artifact@v3
         with:
           name: algorithm-mnemonics-vscode  
           path: dist/algorithm-mnemonics-vscode.vsix  
