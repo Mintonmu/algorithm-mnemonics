@@ -5,7 +5,6 @@
     "version": "1.0.3",
     "publisher": "mintonmu",
     "scripts": {
-        "install": "npm install",
         "pack": "npx vsce package"
     },
     "license": "MIT",
