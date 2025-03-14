@@ -26,7 +26,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '21'  # 设置 Node.js 版本
+          node-version: '21' 
           
       - name: Set npm registry to taobao
         run: npm config set registry https://registry.npmmirror.com 
@@ -36,6 +36,12 @@ jobs:
         
       - name: Install dependencies
         run: yarn install
-      # Runs a set of commands using the runners shell
+        
       - name: package to VSIX file
         run: yarn run pack
+
+      - name: Upload VSIX file
+        uses: actions/upload-artifact@v3
+        with:
+          name: algorithm-mnemonics-vscode  
+          path: dist/algorithm-mnemonics-vscode.vsix  
